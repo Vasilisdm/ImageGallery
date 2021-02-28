@@ -7,9 +7,9 @@ using IdentityServer4;
 
 namespace IdentityServerHost.Quickstart.UI
 {
-    public class TestUsers
+    public static class TestUsers
     {
-        public List<TestUser> Users = new List<TestUser>()
+        public static List<TestUser> Users = new List<TestUser>()
         {
             new TestUser()
             {
