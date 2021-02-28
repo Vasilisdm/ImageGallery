@@ -2,8 +2,10 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace VSL.IDP
 {
@@ -22,6 +24,26 @@ namespace VSL.IDP
 
         public static IEnumerable<Client> Clients =>
             new Client[] 
-            { };
+            {
+                new Client
+                {
+                    ClientName = "ImageGallery",
+                    ClientId = "imagegalleryclient",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = new List<string>()
+                    {
+                        "https://localhost:16749/signin-oidc"
+                    },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    },
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    }
+                }
+            };
     }
 }
