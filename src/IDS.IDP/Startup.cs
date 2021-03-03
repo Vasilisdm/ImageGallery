@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace VSL.IDP
+namespace IDS.IDP
 {
     public class Startup
     {
@@ -21,6 +21,7 @@ namespace VSL.IDP
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // uncomment, if you want to add an MVC-based UI
             services.AddControllersWithViews();
 
             var builder = services.AddIdentityServer(options =>
@@ -44,11 +45,13 @@ namespace VSL.IDP
                 app.UseDeveloperExceptionPage();
             }
 
+            // uncomment if you want to add MVC
             app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityServer();
 
+            // uncomment, if you want to add MVC
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

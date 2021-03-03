@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "VSL.IDP": {
+    "IDS.IDP": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:16749;http://localhost:10782",
+      "applicationUrl": "https://localhost:44892;http://localhost:64045",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
