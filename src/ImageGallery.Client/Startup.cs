@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.Net.Http.Headers;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 
 namespace ImageGallery.Client
 {
@@ -53,6 +52,10 @@ namespace ImageGallery.Client
                 //options.CallbackPath = new PathString("...")                
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
+                options.ClaimActions.DeleteClaim("sid");
+                options.ClaimActions.DeleteClaim("idp");
+                options.ClaimActions.DeleteClaim("s_hash");
+                options.ClaimActions.DeleteClaim("auth_time");
                 options.SaveTokens = true;
                 options.ClientSecret = "secret";
                 options.GetClaimsFromUserInfoEndpoint = true;
